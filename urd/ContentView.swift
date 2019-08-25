@@ -20,7 +20,7 @@ struct ContentView : View {
         VStack {
             if (hasAccess) {
                 
-                Text("You have access to calendar")
+                CalendarList()
             } else {
                 
                 AccessButton()

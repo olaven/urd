@@ -13,4 +13,6 @@ struct _Calendar: Identifiable {
     
     let id = UUID()
     var name: String
+    var color: Color
+    var hours: Int
 }
