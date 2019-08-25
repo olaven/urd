@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Calendar {
+struct _Calendar: Identifiable {
     
+    let id = UUID()
+    var name: String
 }
