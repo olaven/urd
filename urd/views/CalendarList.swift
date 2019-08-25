@@ -7,28 +7,11 @@
 //
 
 import SwiftUI
-import EventKit
 
-func getCalendars() -> [_Calendar] {
-    
-
-    let eventStore = EKEventStore()
-    let ekCalendars = eventStore.calendars(for: .event)
-    let calendars = ekCalendars.map { ekCalendar in
-        
-        _Calendar(
-            name: ekCalendar.title,
-            color: .orange,//FIXME: placeholder
-            hours: 2 //FIXME: placeholder
-        )
-    }
-    
-    return calendars
-}
 
 
 struct CalendarRow: View {
-    var calendar: _Calendar
+    var calendar: MyCalendar
     
     var body: some View {
         HStack {
@@ -40,8 +23,10 @@ struct CalendarRow: View {
 
 
 struct CalendarList: View {
+    
+    let calendars = getCalendars()
     var body: some View {
-        List(getCalendars()) { calendar in
+        List(calendars) { calendar in
             CalendarRow(calendar: calendar)
         }
     }

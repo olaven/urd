@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-struct _Calendar: Identifiable {
+struct MyCalendar: Identifiable {
     
-    let id = UUID()
+    let id: String
     var name: String
     var color: Color
     var hours: Int
