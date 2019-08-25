@@ -10,12 +10,6 @@ import SwiftUI
 import EventKit
 
 
-func askForCalendarPermission() {
-    
-    
-    
-}
-
 struct ContentView : View {
     
     @State private var hasAccess = EKEventStore.authorizationStatus(for: .event) == EKAuthorizationStatus.authorized;
@@ -29,47 +23,11 @@ struct ContentView : View {
                 Text("You have access to calendar")
             } else {
                 
-                Button(
-                    action: {
-                        
-                        switch EKEventStore.authorizationStatus(for: .event) {
-                            
-                        case .authorized:
-                            print("Authorized")
-                            
-                        case .notDetermined:
-                            self.eventStore.requestAccess(to: .event, completion: {
-                                (granted: Bool, error: Error?) -> Void in
-                                
-                                if granted {
-                                    print("Granted")
-                                } else {
-                                    print("Denied")
-                                }
-                            })
-                        case .denied:
-                            
-                            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                                return
-                            }
-                            
-                            if UIApplication.shared.canOpenURL(settingsUrl) {
-                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                    print("Settings opened: \(success)") // Prints true
-                                })
-                            }
-                        default:
-                            print("Default case")
-                        }
-                    }) {
-                        
-                        Text("Give access")
-                    }
+                AccessButton()
             }
         }
     }
 }
-
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
