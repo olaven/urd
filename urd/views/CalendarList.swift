@@ -15,9 +15,9 @@ struct CalendarRow: View {
     
     var body: some View {
         HStack {
-            Text("\(calendar.name)")
+            Text("\(calendar.name)").font(.headline).underline(true, color: calendar.color)
             Text("\(calendar.hours)")
-        }.background(calendar.color)
+        }
     }
 }
 

@@ -17,9 +17,12 @@ struct ContentView : View {
     
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             if (hasAccess) {
                 
+                Text("Overview: ")
+                    .bold()
+                    .font(.largeTitle)
                 CalendarList()
             } else {
                 
