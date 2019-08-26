@@ -19,7 +19,7 @@ func getCalendars() -> [MyCalendar] {
         let events = getEKEvents(in: ekCalendar)
         let hours = getHours(of: events)
         //let color = Color(uiColor: UIColor(cgColor: ekCalendar.cgColor))
-        let color = Color(UIColor(cgColor: ekCalendar.cgColor))
+        let color = Color(UIColor(cgColor: ekCalendar.cgColor)) 
         
         return MyCalendar(
             id: ekCalendar.calendarIdentifier,
@@ -36,6 +36,8 @@ private func getEKEvents(in ekCalendar: EKCalendar) -> [EKEvent] {
     let start = Calendar.current.date(byAdding: .year, value: -3, to: Date())
     let end = Date()
     
+    print("current date: ", end)
+    
                     //NOTE: if interval > 4 years, takes first events.
     let predicate = eventStore.predicateForEvents(withStart: start!, end: end, calendars: [ekCalendar])
     let events = eventStore.events(matching: predicate)
@@ -48,13 +50,13 @@ private func getHours(of events: [EKEvent]) -> Int {
     var hours = 0
     for event in events {
         
-        let start = event.startDate.timeIntervalSinceReferenceDate
-        let end = event.endDate.timeIntervalSinceReferenceDate
-        let duration = ((end - start) * 1000 / 60) / 60
+        let start = event.startDate!
+        let end = event.endDate
+        let components = Calendar.current.dateComponents([.hour], from: start, to: end!)
         
-        hours += Int(duration)
+        hours += Int(components.hour!)
     }
-    
+
     return hours
 }
 
