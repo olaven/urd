@@ -39,9 +39,17 @@ private func getEKEvents(in ekCalendar: EKCalendar) -> [EKEvent] {
     print("current date: ", end)
     
                     //NOTE: if interval > 4 years, takes first events.
-    let predicate = eventStore.predicateForEvents(withStart: start!, end: end, calendars: [ekCalendar])
-    let events = eventStore.events(matching: predicate)
-    
+    let predicate = eventStore
+        .predicateForEvents(withStart: start!, end: end, calendars: [ekCalendar])
+    let events = eventStore.events(matching: predicate).filter({ekEvent in
+        
+        print("is all day: \(ekEvent.isAllDay), excluded all day: \(excludeAllDayEvents()) \n")
+        if (ekEvent.isAllDay && excludeAllDayEvents()) {
+            return false;
+        }
+        
+        return true
+    })
     return events;
 }
 
