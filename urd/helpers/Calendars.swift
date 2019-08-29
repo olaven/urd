@@ -43,7 +43,6 @@ private func getEKEvents(in ekCalendar: EKCalendar) -> [EKEvent] {
         .predicateForEvents(withStart: start!, end: end, calendars: [ekCalendar])
     let events = eventStore.events(matching: predicate).filter({ekEvent in
         
-        print("is all day: \(ekEvent.isAllDay), excluded all day: \(excludeAllDayEvents()) \n")
         if (ekEvent.isAllDay && excludeAllDayEvents()) {
             return false;
         }
