@@ -8,9 +8,27 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>App settings</string>
+			<string>Include events from last:</string>
+			<key>Key</key>
+			<string>INCLUDE_EVENTS_FROM</string>
+			<key>DefaultValue</key>
+			<string>YEAR</string>
+			<key>Titles</key>
+			<array>
+				<string>Week</string>
+				<string>Month</string>
+				<string>Six months</string>
+				<string>Year</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>WEEK</string>
+				<string>MONTH</string>
+				<string>SIX_MONTHS</string>
+				<string>YEAR</string>
+			</array>
 		</dict>
 		<dict>
 			<key>Type</key>

@@ -21,7 +21,7 @@ Currently, my main ideas are:
 - [ ] Displaying some fitting diagram with hours/calendar 
 - [ ] Change the order of displayed calendars
 - [ ] Sorting alphabetically and by hours 
-
+- [ ] Manual refresh
 I am not used to writing in Swift, nor making stuff for iOS in general. Additionally, I have not used SwiftUI that much either. 
 Please let me know if you have any feedback on how the code should be (re)written. You are probably right. And in any case, I will 
 listen 👨‍💻
